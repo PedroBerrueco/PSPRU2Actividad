@@ -13,6 +13,7 @@ public class Almacen {
 
             if (reservas <=23){
                 reservas += 2;
+                System.out.println("Soy el hilo: " + Thread.currentThread().getName() + " - Las reservas aumentaron ahora son " + reservas + " unidades.");
             }
             return reservas;
         }
@@ -22,6 +23,7 @@ public class Almacen {
 
             if (reservas >= 2) {
                 reservas -= 2;
+                System.out.println("Soy el hilo: " + Thread.currentThread().getName() + " - Las reservas disminuyeron ahora son " + reservas + " unidades.");
             }
             return reservas;
         };
