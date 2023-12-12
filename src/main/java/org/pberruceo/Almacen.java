@@ -2,30 +2,24 @@ package org.pberruceo;
 
 public class Almacen {
 
-    private static int reservas = 12; //Iniciamos Almacen a media carga.
+    private int reservas;
 
-    public static int getReservas() {
+    public Almacen(int reservas) {
+        this.reservas = reservas;
+    }
+
+    public  synchronized int saca(int resta){
+        reservas -= resta;
         return reservas;
     }
 
-    public static synchronized int anade(){
-            //Incrementa las reservas - Tope 25
+    public synchronized int mete(int suma){
+        reservas += suma;
+        return reservas;
+    }
 
-            if (reservas <=23){
-                reservas += 2;
-                System.out.println("Soy el hilo: " + Thread.currentThread().getName() + " - Las reservas aumentaron ahora son " + reservas + " unidades.");
-            }
-            return reservas;
-        }
-
-        public static synchronized int retira(){
-            //Decrementa las reservas - Minimo 0
-
-            if (reservas >= 2) {
-                reservas -= 2;
-                System.out.println("Soy el hilo: " + Thread.currentThread().getName() + " - Las reservas disminuyeron ahora son " + reservas + " unidades.");
-            }
-            return reservas;
-        };
+    public int getTotalPlantas() {
+        return reservas;
+    }
 
 }

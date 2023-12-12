@@ -12,12 +12,12 @@ public class CreaHilos implements Runnable {
             int decision = random.nextInt(2);
 
             if (decision == 0) {
-                int stock = Almacen.anade();
+               // int stock = Almacen.anade();
 
 
 
             } else {
-                int stock2 = Almacen.retira();
+               // int stock2 = Almacen.retira();
 
             }
         }

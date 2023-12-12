@@ -1,40 +1,38 @@
 package org.pberruceo;
-
 public class Main {
+
+
+
     public static void main(String[] args) {
 
-        CreaHilos firsthilo = new CreaHilos();
-        Thread hilo1 = new Thread(firsthilo);
-        hilo1.start();
+        // Creamos las instancias
 
-        CreaHilos secondhilo = new CreaHilos();
-        Thread hilo2 = new Thread(secondhilo);
-        hilo2.start();
+        Almacen miAlmacen = new Almacen(10);   // Inicializamos el almcacen con 10 plantas
 
-        CreaHilos thirdhilo = new CreaHilos();
-        Thread hilo3 = new Thread(thirdhilo);
-        hilo3.start();
+        Productor productor1 = new Productor("productor1", 2, miAlmacen);
+        Productor productor2 = new Productor("productor2", 4, miAlmacen);
+        Productor productor3 = new Productor("productor3", 6, miAlmacen);
 
-        CreaHilos fourthilo = new CreaHilos();
-        Thread hilo4 = new Thread(fourthilo);
-        hilo4.start();
+        Consumidor consumidor1 = new Consumidor("consumidor1", 6, miAlmacen);
+        Consumidor consumidor2 = new Consumidor("consumidor2", 8, miAlmacen);
+        Consumidor consumidor3 = new Consumidor("consumidor3", 5, miAlmacen);
 
-        CreaHilos fivethilo = new CreaHilos();
-        Thread hilo5 = new Thread(fivethilo);
-        hilo5.start();
 
-        CreaHilos sixthilo = new CreaHilos();
-        Thread hilo6 = new Thread(sixthilo);
-        hilo6.start();
+        // Iniciaremos la ejecicion de todos los hilos
+        productor1.start();
+        productor2.start();
+        productor3.start();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        consumidor1.start();
+        consumidor2.start();
+        consumidor3.start();
 
-        System.out.println("Finalmente las reservas son: " + Almacen.getReservas());
+
+
+        System.out.println("Tenemos en stock " + miAlmacen.getTotalPlantas() + " plantas");
+
+
 
     }
-}
 
+}
