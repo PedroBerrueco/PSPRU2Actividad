@@ -1,4 +1,7 @@
 package org.pberruceo;
+
+import static java.lang.Thread.sleep;
+
 public class Main {
 
 
@@ -27,10 +30,11 @@ public class Main {
         consumidor2.start();
         consumidor3.start();
 
-
-
-        System.out.println("Tenemos en stock " + miAlmacen.getTotalPlantas() + " plantas");
-
+        try {
+            sleep(2000);
+            System.out.println("Tenemos en stock " + miAlmacen.getTotalPlantas() + " plantas");
+        } catch (Exception e){
+        }
 
 
     }

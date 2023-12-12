@@ -8,8 +8,10 @@ public class Consumidor extends Thread{
         this.consumidor = consumidor;
         this.resta = resta;
         this.miAlmacen = miAlmacen;
+    }
 
+    @Override
+    public void run() {
         miAlmacen.saca(resta);
-        System.out.println(miAlmacen.getTotalPlantas());
     }
 }

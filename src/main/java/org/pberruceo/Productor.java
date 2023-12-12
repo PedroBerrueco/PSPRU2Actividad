@@ -9,8 +9,10 @@ public class Productor extends Thread{
         this.productor = productor;
         this.suma = suma;
         this.miAlmacen = miAlmacen;
+    }
 
+    @Override
+    public void run() {
         miAlmacen.mete(suma);
-        System.out.println(miAlmacen.getTotalPlantas());
     }
 }
